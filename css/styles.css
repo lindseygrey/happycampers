@@ -11457,8 +11457,8 @@ header.masthead h1, header.masthead .h1 {
   opacity: 1;
 }
 
-/*  .headshot {
+  .headshot {
   width: 200px;
   height: 300px;
   object-fit: contain;
-} */
+} 
