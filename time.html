@@ -39,11 +39,12 @@
       require([
         "esri/Map",
         "esri/views/MapView",
+        "esri/widgets/Print",
         "esri/layers/FeatureLayer",
         "esri/widgets/TimeSlider",
         "esri/widgets/Expand",
         "esri/widgets/Legend"
-      ], ( Map, MapView, FeatureLayer, TimeSlider, Expand, Legend) =>{
+      ], ( Map, MapView, Print, FeatureLayer, TimeSlider, Expand, Legend) =>{
         
         //esriConfig.apiKey = "AAPKb7fd7d5cf12f4a65ad63cdef1255e5be28Ax_PpxkDP8EeBPex0s4fPuRbtY7eys0GQ7y-H7iSTiPID4ZerBaJSUiaqT82PV";
         const popupStations = {
@@ -58,9 +59,16 @@
         
         });
 
+        const layer2 = new FeatureLayer({
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/ArcGIS/rest/services/DissolvedOxygen/FeatureServer/0",
+          outFields: ["STN","FIXDATE", "Temp", "DO"],
+          popupTemplate: popupStations
+        
+        });
+
         const map = new Map({
-          basemap: "hybrid",
-          layers: [layer]
+          basemap: "oceans",
+          layers: [layer, layer2]
         });
 
         const view = new MapView({
@@ -70,8 +78,27 @@
           center: [-79.3755, 44.4103]
         });
 
+        //add in Print service
+        view.when(() => {
+          const print = new Print({
+            view: view,
+            // specify your own print service
+            printServiceUrl:
+              "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+          });
 
-        
+        const PrintExpand = new Expand({
+          expandIconClass: "esri-icon-printer",
+          expandTooltip: "Print Map",
+          view: view,
+          content: print,
+          expanded: false    
+        });
+        // Add widget to the middle right corner of the view
+        view.ui.add(PrintExpand, "top-left");
+        });
+
+
         // time slider widget initialization
         const timeSlider = new TimeSlider({
           container: "timeSlider",
@@ -83,7 +110,7 @@
         // add the UI for a title
         view.ui.add("titleDiv", "top-right");
 
-        view.whenLayerView(layer).then((lv) => {
+        view.whenLayerView(layer).then((lv) => {PrintExpand
           // around up the full time extent to full hour
           timeSlider.fullTimeExtent =
             layer.timeInfo.fullTimeExtent.expandTo("hours");
@@ -91,6 +118,16 @@
             interval: layer.timeInfo.interval
           };
         });
+
+        view.whenLayerView(layer2).then((lv) => {
+          // around up the full time extent to full hour
+          timeSlider.fullTimeExtent =
+            layer2.timeInfo.fullTimeExtent.expandTo("hours");
+          timeSlider.stops = {
+            interval: layer2.timeInfo.interval
+          };
+        });
+
 
         const legend = new Legend({
           view: view
@@ -100,7 +137,7 @@
           expandTooltip: "Legend",
           view: view,
           content: legend,
-          expanded: false
+          expanded: true    
         });
         view.ui.add(legendExpand, "top-left");
       
