@@ -161,6 +161,13 @@
           content: legend,
           expanded: true    
         });
+        const legendExpand2 = new Expand({
+          expandIconClass: "esri-icon-legend",
+          expandTooltip: "Legend",
+          view: view,
+          content: legend2,
+          expanded: true    
+        });
         view.ui.add(legendExpand, "top-left");
 
         // Create a variable referencing the checkbox node
