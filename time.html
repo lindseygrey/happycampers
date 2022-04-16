@@ -144,7 +144,14 @@
           view: view,
           layerInfos: [{
             layer: layer,
-            title: "Quail Habitat Status"
+            title: "Temperature (C)"
+          }]
+        });
+        const legend2 = new Legend({
+          view: view,
+          layerInfos: [{
+            layer: layer2,
+            title: "Dissolved oxygen (mg/L)"
           }]
         });
         const legendExpand = new Expand({
