@@ -147,6 +147,12 @@
         TempLayerToggle.addEventListener("change", () => {
          // When the checkbox is checked (true), set the layer's visibility to true
         layer.visible = TempLayerToggle.checked;
+      });
+        const DOLayerToggle = document.getElementById("DOLayer");
+          // Listen to the change event for the checkbox
+        DOLayerToggle.addEventListener("change", () => {
+         // When the checkbox is checked (true), set the layer's visibility to true
+        layer2.visible = DOLayerToggle.checked;
   });
       
       });
