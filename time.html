@@ -34,6 +34,17 @@
         font-weight: 36;
         text-align: center;
       }
+      
+      #layerToggle {
+        top: 20px;
+        right: 20px;
+        position: absolute;
+        z-index: 99;
+        background-color: white;
+        border-radius: 8px;
+        padding: 10px;
+        opacity: 0.75;
+      }
     </style>
     <script>
       require([
@@ -153,7 +164,7 @@
         DOLayerToggle.addEventListener("change", () => {
          // When the checkbox is checked (true), set the layer's visibility to true
         layer2.visible = DOLayerToggle.checked;
-  });
+      });
       
       });
     </script>
@@ -161,8 +172,10 @@
 
   <body>
     <div id="viewDiv"></div>
-    <span id="layerToggle" class="esri-widget"> <input type="checkbox" id="TempsLayer" checked /> Temperature </span>
-    <span id="layerToggle" class="esri-widget"> <input type="checkbox" id="DOLayer" checked /> Dissolved Oxygen </span>
+    <span id="layerToggle" class="esri-widget"> 
+      <input type="checkbox" id="TempsLayer" checked /> Temperature </span>
+    <span id="layerToggle" class="esri-widget"> 
+      <input type="checkbox" id="DOLayer" checked /> Dissolved Oxygen </span>
     <div id="timeSlider"></div>
     <div id="titleDiv" class="esri-widget">
       <div id="titleText">Water Quality Monitoring Stations Lake Simcoe</div>
