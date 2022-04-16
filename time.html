@@ -145,10 +145,7 @@
           layerInfos: [{
             layer: layer,
             title: "Temperature (C)"
-          }]
-        });
-        const legend2 = new Legend({
-          view: view,
+          }],
           layerInfos: [{
             layer: layer2,
             title: "Dissolved oxygen (mg/L)"
@@ -161,15 +158,9 @@
           content: legend,
           expanded: true    
         });
-        const legendExpand2 = new Expand({
-          expandIconClass: "esri-icon-legend",
-          expandTooltip: "Legend",
-          view: view,
-          content: legend2,
-          expanded: true    
-        });
+        
         view.ui.add(legendExpand, "top-left");
-        view.ui.add(legendExpand2, "top-left");
+
         // Create a variable referencing the checkbox node
         const TempLayerToggle = document.getElementById("TempsLayer");
           // Listen to the change event for the checkbox
