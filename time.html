@@ -140,7 +140,14 @@
           expanded: true    
         });
         view.ui.add(legendExpand, "top-left");
-      
+        
+        // Create a variable referencing the checkbox node
+        const TempLayerToggle = document.getElementById("TempsLayer");
+          // Listen to the change event for the checkbox
+        TempLayerToggle.addEventListener("change", () => {
+         // When the checkbox is checked (true), set the layer's visibility to true
+        layer.visible = TempLayerToggle.checked;
+  });
       
       });
     </script>
@@ -148,6 +155,8 @@
 
   <body>
     <div id="viewDiv"></div>
+    <span id="layerToggle" class="esri-widget"> <input type="checkbox" id="TempsLayer" checked /> Temperature </span>
+    <span id="layerToggle" class="esri-widget"> <input type="checkbox" id="DOLayer" checked /> Dissolved Oxygen </span>
     <div id="timeSlider"></div>
     <div id="titleDiv" class="esri-widget">
       <div id="titleText">Water Quality Monitoring Stations Lake Simcoe</div>
