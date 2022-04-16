@@ -141,7 +141,11 @@
 
 
         const legend = new Legend({
-          view: view
+          view: view,
+          layerInfos: [{
+            layer: featureLayer,
+            title: "Quail Habitat Status"
+          }]
         });
         const legendExpand = new Expand({
           expandIconClass: "esri-icon-legend",
@@ -151,7 +155,7 @@
           expanded: true    
         });
         view.ui.add(legendExpand, "top-left");
-        
+
         // Create a variable referencing the checkbox node
         const TempLayerToggle = document.getElementById("TempsLayer");
           // Listen to the change event for the checkbox
@@ -175,8 +179,7 @@
     <span id="layerToggle" class="esri-widget"> 
       <input type="checkbox" id="TempsLayer" checked /> Temperature 
       <input type="checkbox" id="DOLayer" checked /> Dissolved Oxygen
-      </span>
-        
+    </span>
     <div id="timeSlider"></div>
     <div id="titleDiv" class="esri-widget">
       <div id="titleText">Water Quality Monitoring Stations Lake Simcoe</div>
