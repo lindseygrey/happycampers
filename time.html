@@ -117,19 +117,6 @@
           view: view,
           timeVisible: true, // show the time stamps on the timeslider
           loop: true,
-          units: "months",
-        });
-
-        // add the UI for a title
-        view.ui.add("titleDiv", "top-right");
-
-        view.whenLayerView(layer).then((lv) => {PrintExpand
-          // around up the full time extent to full hour
-          timeSlider.fullTimeExtent =
-            layer.timeInfo.fullTimeExtent.expandTo("months");
-          timeSlider.stops = {
-            interval: layer.timeInfo.interval
-          };
           labelFormatFunction: (value, type, element, layout) => {
               const normal = new Intl.DateTimeFormat("en-us");
               switch (type) {
@@ -145,6 +132,20 @@
                   element.parentNode.setAttribute("style", "width:0px");
                   break;
               }}
+
+        });
+
+        // add the UI for a title
+        view.ui.add("titleDiv", "top-right");
+
+        view.whenLayerView(layer).then((lv) => {PrintExpand
+          // around up the full time extent to full hour
+          timeSlider.fullTimeExtent =
+            layer.timeInfo.fullTimeExtent.expandTo("months");
+          timeSlider.stops = {
+            interval: layer.timeInfo.interval
+          };
+
         });
 
         view.whenLayerView(layer2).then((lv) => {
