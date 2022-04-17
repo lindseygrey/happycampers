@@ -156,6 +156,7 @@ h6, .h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-family: "Segoe UI";
 }
 
 abbr[title],
@@ -7325,6 +7326,10 @@ textarea.form-control-lg {
   margin-top: 3rem !important;
 }
 
+.mt-52 {
+  margin-top: 1rem !important;
+}
+
 .mt-auto {
   margin-top: auto !important;
 }
@@ -11307,6 +11312,10 @@ body {
   padding: 8rem 0;
 }
 
+.page-section2 {
+  padding: 6rem 0;
+}
+
 .text-white-75 {
   color: rgba(255, 255, 255, 0.75) !important;
 }
@@ -11325,6 +11334,14 @@ hr.divider {
   max-width: 3.25rem;
   margin: 1.5rem auto;
   background-color: #fff;
+  opacity: 1;
+}
+
+hr.divider2 {
+  height: 0.2rem;
+  max-width: 2.0rem;
+  margin: 1.0rem auto;
+  background-color: #1A759F;
   opacity: 1;
 }
 
