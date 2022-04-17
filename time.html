@@ -118,7 +118,9 @@
           timeVisible: true, // show the time stamps on the timeslider
           loop: true,
           playrate: 2000,
-          stops:20,
+          stops:{
+          count: 18
+          },
           labelFormatFunction: (value, type, element, layout) => {
               const normal = new Intl.DateTimeFormat("en-us");
               switch (type) {
