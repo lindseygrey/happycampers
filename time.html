@@ -125,7 +125,7 @@
         view.whenLayerView(layer).then((lv) => {PrintExpand
           // around up the full time extent to full hour
           timeSlider.fullTimeExtent =
-            layer.timeInfo.fullTimeExtent.expandTo("hours");
+            layer.timeInfo.fullTimeExtent.expandTo("months");
           timeSlider.stops = {
             interval: layer.timeInfo.interval
           };
@@ -134,7 +134,7 @@
         view.whenLayerView(layer2).then((lv) => {
           // around up the full time extent to full hour
           timeSlider.fullTimeExtent =
-            layer2.timeInfo.fullTimeExtent.expandTo("hours");
+            layer2.timeInfo.fullTimeExtent.expandTo("months");
           timeSlider.stops = {
             interval: layer2.timeInfo.interval
           };
@@ -169,19 +169,19 @@
         });
         view.ui.add(layerList, "top-left");
 
-        // Create a variable referencing the checkbox node
-        const TempLayerToggle = document.getElementById("TempsLayer");
-          // Listen to the change event for the checkbox
-        TempLayerToggle.addEventListener("change", () => {
-         // When the checkbox is checked (true), set the layer's visibility to true
-        layer.visible = TempLayerToggle.checked;
-      });
-        const DOLayerToggle = document.getElementById("DOLayer");
-          // Listen to the change event for the checkbox
-        DOLayerToggle.addEventListener("change", () => {
-         // When the checkbox is checked (true), set the layer's visibility to true
-        layer2.visible = DOLayerToggle.checked;
-      });
+      //   // Create a variable referencing the checkbox node
+      //   const TempLayerToggle = document.getElementById("TempsLayer");
+      //     // Listen to the change event for the checkbox
+      //   TempLayerToggle.addEventListener("change", () => {
+      //    // When the checkbox is checked (true), set the layer's visibility to true
+      //   layer.visible = TempLayerToggle.checked;
+      // });
+      //   const DOLayerToggle = document.getElementById("DOLayer");
+      //     // Listen to the change event for the checkbox
+      //   DOLayerToggle.addEventListener("change", () => {
+      //    // When the checkbox is checked (true), set the layer's visibility to true
+      //   layer2.visible = DOLayerToggle.checked;
+      // });
       
       });
     </script>
@@ -189,10 +189,10 @@
 
   <body>
     <div id="viewDiv"></div>
-    <span id="layerToggle" class="esri-widget"> 
+    <!-- <span id="layerToggle" class="esri-widget"> 
       <input type="checkbox" id="TempsLayer" checked /> Temperature 
       <input type="checkbox" id="DOLayer" checked /> Dissolved Oxygen
-    </span>
+    </span> -->
     <div id="timeSlider"></div>
     <div id="titleDiv" class="esri-widget">
       <div id="titleText">Water Quality Monitoring Stations Lake Simcoe</div>
