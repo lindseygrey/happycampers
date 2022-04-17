@@ -65,14 +65,14 @@
       };
 
         const layer = new FeatureLayer({
-          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Temperature/FeatureServer/0",
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/ArcGIS/rest/services/TemperatureLakeSimcoe2019/FeatureServer/0",
           outFields: ["STN","FIXDATE", "Temperature", "Dissolved Oxygen (mg/L)"],
           popupTemplate: popupStations
         
         });
 
         const layer2 = new FeatureLayer({
-          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Dissolved_Oxygen/FeatureServer/0",
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/ArcGIS/rest/services/DissolvedOxygen/FeatureServer/0",
           outFields: ["STN","FIXDATE", "Temperature", "Dissolved Oxygen (mg/L)"],
           popupTemplate: popupStations
         
