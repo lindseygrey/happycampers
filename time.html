@@ -130,6 +130,21 @@
           timeSlider.stops = {
             interval: layer.timeInfo.interval
           };
+          labelFormatFunction: (value, type, element, layout) => {
+              const normal = new Intl.DateTimeFormat("en-us");
+              switch (type) {
+                case "min":
+                  element.setAttribute("style", "color: #ff642e;");
+                  element.innerText = "Febuary, 2019";
+                  break;
+                case "max":
+                  element.setAttribute("style", "color: #ff642e;");
+                  element.innerText = "November, 2019";
+                  break;
+                case "extent":
+                  element.parentNode.setAttribute("style", "width:0px");
+                  break;
+              }}
         });
 
         view.whenLayerView(layer2).then((lv) => {
