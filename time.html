@@ -204,7 +204,7 @@
       //    // When the checkbox is checked (true), set the layer's visibility to true
       //   layer2.visible = DOLayerToggle.checked;
       // });
-      featureLayer.watch("loaded", function(){
+      layer.watch("loaded", function(){
           watchUtils.whenFalseOnce(view, "updating", function(){
              var attribs = dojoQuery(".esri-attribution__sources")[0];
              console.info(attribs);
