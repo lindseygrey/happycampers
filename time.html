@@ -56,8 +56,11 @@
         "esri/widgets/Expand",
         "esri/widgets/Legend",
         "esri/widgets/LayerList",
-        "esri/widgets/Attribution"
-      ], ( Map, MapView, Print, FeatureLayer, TimeSlider, Expand, Legend, LayerList, Attribution)  =>{
+        "esri/widgets/Attribution",
+        "dojo/query",
+        "esri/core/watchUtils",
+        "dojo/domReady!"
+      ], ( Map, MapView, Print, FeatureLayer, TimeSlider, Expand, Legend, LayerList, Attribution, dojoQuery,watchUtils, dojoDomReady)  => {
         
         //esriConfig.apiKey = "AAPKb7fd7d5cf12f4a65ad63cdef1255e5be28Ax_PpxkDP8EeBPex0s4fPuRbtY7eys0GQ7y-H7iSTiPID4ZerBaJSUiaqT82PV";
         const popupStations = {
@@ -201,6 +204,13 @@
       //    // When the checkbox is checked (true), set the layer's visibility to true
       //   layer2.visible = DOLayerToggle.checked;
       // });
+      layer.watch("loaded", function(){
+          watchUtils.whenFalseOnce(view, "updating", function(){
+             var attribs = dojoQuery(".esri-attribution__sources")[0];
+             console.info(attribs);
+             attribs.innerHTML += " Blah Blah";
+          });
+        });
 
       const attribution = new Attribution({view});
     view.ui.add(attribution, "manual");
