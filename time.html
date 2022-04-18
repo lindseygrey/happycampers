@@ -202,11 +202,8 @@
       //   layer2.visible = DOLayerToggle.checked;
       // });
 
-      const attribution = new Attribution({
-        view:view,
-        attributionText:"Source Data"
-      });
-      view.ui.add(attribution, "manual");
+      const attribution = new Attribution({view});
+    view.ui.add(attribution, "manual");
       });
 
     </script>
