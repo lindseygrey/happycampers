@@ -8,9 +8,9 @@
     <title>Lake Simcoe Water Quality</title>
     <link
       rel="stylesheet"
-      href="https://js.arcgis.com/4.23/esri/themes/light/main.css"
+      href="https://js.arcgis.com/4.5/esri/themes/light/main.css"
     />
-    <script src="https://js.arcgis.com/4.23/"></script>
+    <script src="https://js.arcgis.com/4.5/"></script>
 
     <style>
       html,
@@ -207,11 +207,12 @@
       //    // When the checkbox is checked (true), set the layer's visibility to true
       //   layer2.visible = DOLayerToggle.checked;
       // });
+
       layer.watch("loaded", function(){
           watchUtils.whenFalseOnce(view, "updating", function(){
              var attribs = dojoQuery(".esri-attribution__sources")[0];
              console.info(attribs);
-             attribs.innerHTML += " Blah Blah";
+             attribs.innerHTML += " | Ontario Data, Environment, Conservation and Parks";
           });
         });
      // solution found at https://community.esri.com/t5/arcgis-api-for-javascript-questions/javascript-api-attribution-widget-copyright-text/m-p/642952
