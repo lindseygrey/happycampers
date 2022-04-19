@@ -33,7 +33,6 @@
                         <li class="nav-item"><a class="nav-link" href="#process">Our Process</a></li>
                         <li class="nav-item"><a class="nav-link" href="#conc">Conclusion</a></li>
                         <li class="nav-item"><a class="nav-link" href="#ty">Thank you</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#cont">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +42,7 @@
             <div class="container px-4 px-lg-5 h-100">
                 <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">Water Level and Fish Habitat Mapping</h1>
+                        <h1 class="text-white font-weight-bold">Key Water Quality Indicators for Lake Simcoe</h1>
                         <hr class="divider" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
@@ -59,21 +58,21 @@
                         <h2 class="text-center mt-0">Our Team</h2>
                         <hr class="divider2" />
                         <div class="row gx-4 gx-lg-3">
-                            <div class="col-lg-3 col-md-6 text-center">
+                            <div class="col-xl-4 col-md-6 text-center">
                                 <div class="mt-52">
                                     <img class="headshot" src="assets/LindseyHeadshot.png" alt="Lindsey Headshot" width="671" height="671">
                                     <h3 class="h4 mb-2">Lindsey Greidanus</h3>
-                                    <p class="text-muted mb-0">About Lindsey</p>
+                                    <p class="text-muted mb-0">Lindsey has an undergraduate degree in Environment Sciences from the University of Guelph and a passion for the great outdoors. Exceling in programing and solving problems, they are excited to support the team and help communicate water conservation messages. </p>
                                 </div>
                             </div>
-                            <div class="col-xlg-3 col-md-6 text-center">
+                            <div class="col-xl-4 col-md-6 text-center">
                                 <div class="mt-52">
                                     <img class="headshot" src="assets/RachelHeadshot.png" alt="Rachel Headshot" width="502" height="502">
                                     <h3 class="h4 mb-2">Rachel Manderfeld</h3>
                                     <p class="text-muted mb-0">Rachel segued into GIS through their lifelong passion for geography and the environment.  Drawing from their information management background, Rachel is excited to discover and share the narratives and meaning within geospatial data.  </p>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 text-center">
+                            <div class="col-xl-4 col-md-6 text-center">
                                 <div class="mt-52">
                                     <img class="headshot" src="assets/KendyllHeadshot.png" alt="Kendyll Headshot" width="3271" height="3271">
                                     <h3 class="h4 mb-2">Kendyll Jones-McGowan</h3>
@@ -107,7 +106,7 @@
                         <p class="text-white-75 mb-4">Kawartha Conservation identified that lake stewards and stakeholders would benefit from having a tool that 
                             presents water quality parameters such as temperature and dissolved oxygen in an easy 
                             to use and quickly understandable format. Our tool will hopefully increase public engagement and awareness of the lake's overall lake
-                             health. A heightened understanding of Lake Simcoe benefits all who use the lake and the creatures who call this lake home. 
+                             health. A heightened understanding of Lake Simcoe benefits all who use the lake and the creatures who call this lake home. </p>
                             <!--Lake stewards and stakeholders could benefit greatly from having a tool that presents water quality parameters such as temperature and dissolved oxygen in an easy to use and quickly understandable format. Our tool will hopefully increase overall lake health concern and engagement, benefitting the stewards, the public, and the environment. </p>-->
                         <a class="btn btn-light btn-xl" href="#process">Our Process</a>
                     </div>
@@ -115,7 +114,7 @@
             </div>
         </section>
         <!-- The Tool -->
-        <section class="page-section2" id="portfolio">
+        <section class="page-section2" >
         <div id="portfolio">
             <div class="container-fluid p-0">
                 <h2 class="text-center mt-0">The Tool</h2>
@@ -186,28 +185,34 @@
                         <div class="col-lg-8 text-center">
                             <h2 class="text-white mt-0">Our Process</h2>
                             <hr class="divider divider-light" />
-                            <p class="text-white-75 mb-4">Our main goal for the project was to visually render two key factors for lake water quality in an 
+                                <p class="text-white-75 mb-4">Our main goal for the project was to visually render two key factors for lake water quality in an 
                                 accessible format: dissolved oxygen and water temperature. We narrowed our scope to 2019 provincial data from six monitoring stations across the lake.
                                 A key feature that we needed for this time-series data was a user-interactive time-slider.
                                 </p>
                                 <p class="text-white-75 mb-4">
-                                Initially, we approached building our solution by leveraging out-of-the box tools, such as Experience Builder, but quickly found that 
-                                our need to display time-series data required customizations that were not possible in that environment.  
-                                As a hybrid solution, we chose to build with Esri's JavaScript API widgets in conjunction with Github.  This afforded us the flexibility and customization we needed 
-                                to render the time-slider feature. 
+                                    Initially, we approached building our solution by leveraging out-of-the box tools, such as Experience Builder, but 
+                                    quickly found that our need to display time-series data required customizations that were not possible in that environment.
+                                    To display a time series within Esri products, the data needed to be time-enabled from the desktop application ArcGIS Pro,
+                                    then uploaded to ArcGIS Online. While the Web Map Viewer displays the time-slider associated with the data, that same layer
+                                    becomes static when placed in Experience Builder or Dashboards. There is a time slider compatible Instant App template, but 
+                                    that solution proved to be very limited in further customization. As a hybrid solution, we chose to build with Esri's JavaScript 
+                                    API widgets in conjunction with Github. This afforded us the flexibility and customization we needed to render the time-slider feature.
                                 </p>
                                 <p class="text-white-75 mb-4">
-                                Once the time-slider feature was established, we added in two web layers, one for dissolved oxygen and water temperature, respectively. 
-                                This data was processed in ArcGIS Pro and then added to ArcGIS Online, whereby it was brought into our JavaScript API webpage. 
-                                We then needed a way for the user to select which layer to display.  We experimented with different ways of having the user select data layers.  In the interest of UX and 
-                                compact design, we opted to have an eye icon within the legend to toggle each layer on or off.  For fun and to broaden the use of the visualized data, we 
-                                included a print option for the user.  This is discretely nested on-screen as an expandable printer icon. 
+                                    Once the data was time enabled, we spliced the data into two web layers, one for dissolved oxygen and water temperature, respectively.
+                                    This data was processed in ArcGIS Pro and then added to ArcGIS Online as a hosted web map, which was then linked to in our
+                                    JavaScript API webpage. To establish a time slider, we followed the examples found in the ArcGIS API for JavaScript, and modified 
+                                    them to fit our data. We then needed a way for the user to select which layer to display. We experimented with different ways of 
+                                    having the user select data layers. In the interest of UX and compact design, we opted to use layer lists, which also displayed each 
+                                    legend and enables users to toggle each layer on or off. For fun and to broaden the use of the visualized data, we included a print 
+                                    option for the user. This is discretely nested on-screen as an expandable printer icon. Further customization was added to the 
+                                    legend, time-slider, and attribution statements. 
                                 </p>
                                 <p class="text-white-75 mb-4">
                                 Throughout our development process, we sought a web solution that would be easily adapted for use with other lakes and their datasets.  
-								Given more time, we would be interested in bringing bathymetry to the visualization and provide the user context for the relationship between dissolved oxygen, water temperature, and 
+								Given more time, we would be interested in bringing bathymetry to the visualization and provide the user context for the relationship between depth, dissolved oxygen, water temperature, and 
                                 how that affects fish habitat quality.
-                            </p>
+                                </p>
                             <!--<a class="btn btn-light btn-xl" href="https://www.kawarthaconservation.com/en/index.aspx">Check them out</a>-->
                         </div>
                     </div>
@@ -220,9 +225,10 @@
                             <div class="col-lg-8 text-center">
                                 <h2 class="text-white mt-0">Conclusion</h2>
                                 <hr class="divider divider-light" />
-                                <p class="text-white-75 mb-4">Deliveri</p>
-                                <p class="text-white-75 mb-4">Deliveri</p>
-                                <a class="btn btn-light btn-xl" href="#cont">Ask more!</a>
+                                <p class="text-white-75 mb-4">Our solution was centered on bringing time-series enable data to water quality metrics, and we faced challenges exploring multiple Esri web solutions to find one would display time series data in a user friendly way. Time was not on our side,  as the <a href="https://community.esri.com/t5/arcgis-experience-builder-blog/experience-builder-2022-roadmap-and-beyond/ba-p/1130725">Road Map for Experience Builder </a>includes an expected launch of time slider capabilities very very soon. While we couldn't wait for this expected update to drop, we pivoted through multiple solutions and conducted a lot of research. This process and the research we conducted will support the development of our final collaborative project as we are familiar with what each of Esri's products can do, and what they can't. 
+                                    </p>
+                                <p class="text-white-75 mb-4">Ultimately, it is important to remember that in the world of Web GIS, new innovations are constantly being launched as the old solutions depreciate over time. Becoming familiar with the development process and developing a flexible skillset is paramount to creating solutions that successfully communicate to the public.</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -234,81 +240,7 @@
                 <a class="btn btn-light btn-xl" href="https://flemingcollege.ca/programs/geographic-information-systems-applications-specialist">Learn more about our program</a>
             </div>
         </section>
-        <!-- Contact-->
-        <section class="page-section" id="cont">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8 col-xl-6 text-center">
-                        <h2 class="mt-0">Let's Get In Touch!</h2>
-                        <hr class="divider2" />
-                        <p class="text-muted mb-5">Want to learn more? Send us a message and we will get back to you as soon as possible!</p>
-                    </div>
-                </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-                    <div class="col-lg-6">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Submit</button></div>
-                        </form>
-                    </div>
-                </div>
-           <!-- <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                        <!--<i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <div></div>-->
-               <!-- </div>
-                </div> --> 
-            </div>
-        </section>
+
         <!-- Footer-->
         <footer class="bg-light py-5">
             <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Happy Campers</div></div>

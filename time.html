@@ -21,6 +21,9 @@
         height: 100%;
         width: 100%;
       }
+      .esri-attribution {              /*   This should make the added source more visible */
+    background-color: rgba(255,255,255,0.25);
+      }
 
       #timeSlider {
         position: absolute;
@@ -204,14 +207,16 @@
       //    // When the checkbox is checked (true), set the layer's visibility to true
       //   layer2.visible = DOLayerToggle.checked;
       // });
+
       layer.watch("loaded", function(){
           watchUtils.whenFalseOnce(view, "updating", function(){
              var attribs = dojoQuery(".esri-attribution__sources")[0];
              console.info(attribs);
-             attribs.innerHTML += " Blah Blah";
+             attribs.innerHTML += " | Ontario Data, Environment, Conservation and Parks";
           });
         });
-
+     // solution found at https://community.esri.com/t5/arcgis-api-for-javascript-questions/javascript-api-attribution-widget-copyright-text/m-p/642952
+     // can't figure out how to make it not be light grey
       const attribution = new Attribution({view});
     view.ui.add(attribution, "manual");
       });
