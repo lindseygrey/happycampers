@@ -21,6 +21,9 @@
         height: 100%;
         width: 100%;
       }
+      p {
+        color:black
+      }
 
       #timeSlider {
         position: absolute;
@@ -211,7 +214,7 @@
              attribs.innerHTML += " Blah Blah";
           });
         });
-
+     // solution found at https://community.esri.com/t5/arcgis-api-for-javascript-questions/javascript-api-attribution-widget-copyright-text/m-p/642952
       const attribution = new Attribution({view});
     view.ui.add(attribution, "manual");
       });
