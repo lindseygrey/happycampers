@@ -48,8 +48,11 @@
         padding: 10px;
         opacity: 1;
       }
+
     </style>
     <script>
+      // Initial website development based off this timeslider sample:
+      // https://developers.arcgis.com/javascript/latest/sample-code/widgets-timeslider/
       require([
         "esri/Map",
         "esri/views/MapView",
@@ -64,25 +67,29 @@
         "esri/core/watchUtils",
         "dojo/domReady!"
       ], ( Map, MapView, Print, FeatureLayer, TimeSlider, Expand, Legend, LayerList, Attribution, dojoQuery,watchUtils, dojoDomReady)  => {
-        
+        // This sample did not require an API key, and adding one in caused errors
         //esriConfig.apiKey = "AAPKb7fd7d5cf12f4a65ad63cdef1255e5be28Ax_PpxkDP8EeBPex0s4fPuRbtY7eys0GQ7y-H7iSTiPID4ZerBaJSUiaqT82PV";
+        
+        //Remember to set your variables before you use them :) saves time
+        // Following this example for popups: 
+        // https://developers.arcgis.com/javascript/latest/display-a-pop-up/
         const popupStations = {
         "title": "Monitoring Station",
         "content": "<b>Station Code:</b> {STN}<br><b>Date:</b> {FIXDATE}<br><b>Temperature (C) :</b> {Temp}<br><b>Dissolved Oxygen (mg/L):</b> {DO}"
       };
+        //if you change your field names on the AGOL item, you need to update them here ^
+
         //feature layer reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-FeatureLayer.html
         const layer = new FeatureLayer({
           url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Temperature/FeatureServer/0",
-          outFields: ["STN","FIXDATE", "Temp", "DO"],
-          popupTemplate: popupStations
-        
+          outFields: ["STN","FIXDATE", "Temp", "DO"], // this line picks what fields you want to display in your pop-ups
+          popupTemplate: popupStations                // variable created above to generate pop-ups when the stations are selection
         });
 
         const layer2 = new FeatureLayer({
           url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Dissolved_Oxygen/FeatureServer/0",
           outFields: ["STN","FIXDATE", "Temp", "DO"],
           popupTemplate: popupStations
-        
         });
 
         // change your basemap here.  Search Esri's basemap names for other names.
@@ -124,12 +131,14 @@
 
         // time slider widget initialization
         //time slider reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-TimeSlider.html
+        // Customizing the time slide widget with custom start and stop text: 
+        //https://developers.arcgis.com/javascript/latest/sample-code/widgets-timeslider-offset/ 
         const timeSlider = new TimeSlider({
           container: "timeSlider",
           view: view,
           timeVisible: true, // show the time stamps on the timeslider
           loop: true,
-          playrate: 2000,
+          playrate: 2000,  // Changes the playthrough speed when the user hits the play icon - measured in milliseconds 
           labelFormatFunction: (value, type, element, layout) => {
               const normal = new Intl.DateTimeFormat("en-us");
               switch (type) {
@@ -141,7 +150,7 @@
                   element.setAttribute("style", "color: #000000;");
                   element.innerText = "November 2019";
                   break;
-                case "extent":
+                case "extent":                            // makes the orginal extent not visible
                   element.parentNode.setAttribute("style", "width:0px");
                   break;
               }}
@@ -185,6 +194,7 @@
         // view.ui.add(legendExpand, "top-left");
 
         //layer list reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList.html
+        // Sample code here: https://developers.arcgis.com/javascript/latest/sample-code/widgets-layerlist-legend/
         const layerList = new LayerList({
           view: view,
           listItemCreatedFunction: (event) => {
@@ -200,6 +210,9 @@
         });
         view.ui.add(layerList, "top-left");
 
+      // This section was taken out in Favour of the Layer list that did the same thing but looked better
+      // Sample code from here applied to 2 layers instead of 1 : https://developers.arcgis.com/javascript/latest/sample-code/intro-layers/
+
       //   // Create a variable referencing the checkbox node
       //   const TempLayerToggle = document.getElementById("TempsLayer");
       //     // Listen to the change event for the checkbox
@@ -214,24 +227,30 @@
       //   layer2.visible = DOLayerToggle.checked;
       // });
 
-      layer.watch("loaded", function(){
+      layer.watch("loaded", function(){                                                    // replaced layer name 
           watchUtils.whenFalseOnce(view, "updating", function(){
              var attribs = dojoQuery(".esri-attribution__sources")[0];
              console.info(attribs);
-             attribs.innerHTML += " | Ontario Data, Environment, Conservation and Parks";
+             attribs.innerHTML += " | Ontario Data, Environment, Conservation and Parks"; // Replaced with custom text to add sources
           });
         });
      // solution found at https://community.esri.com/t5/arcgis-api-for-javascript-questions/javascript-api-attribution-widget-copyright-text/m-p/642952
-     // can't figure out how to make it not be light grey
+     // This solution loads the custom text *behind* the white bottom bar, making it appear grey - modified CSS to make it more visible 
+
       const attribution = new Attribution({view});
     view.ui.add(attribution, "manual");
       });
+      // I don't know if this line of code does what we want it to, but its from these links: 
+      // https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Attribution.html
+      // https://developers.arcgis.com/documentation/mapping-apis-and-services/deployment/basemap-attribution/
+
 
     </script>
   </head>
 
   <body>
     <div id="viewDiv"></div>
+    <!-- This is where the checkboxes went when they still existed:  -->
     <!-- <span id="layerToggle" class="esri-widget"> 
       <input type="checkbox" id="TempsLayer" checked /> Temperature 
       <input type="checkbox" id="DOLayer" checked /> Dissolved Oxygen
@@ -242,3 +261,5 @@
     </div>
   </body>
 </html>
+
+<!-- layer data from https://data.ontario.ca/dataset/lake-simcoe-monitoring -->
