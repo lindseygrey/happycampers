@@ -70,7 +70,7 @@
         "title": "Monitoring Station",
         "content": "<b>Station Code:</b> {STN}<br><b>Date:</b> {FIXDATE}<br><b>Temperature (C) :</b> {Temp}<br><b>Dissolved Oxygen (mg/L):</b> {DO}"
       };
-
+        //feature layer reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-FeatureLayer.html
         const layer = new FeatureLayer({
           url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Temperature/FeatureServer/0",
           outFields: ["STN","FIXDATE", "Temp", "DO"],
@@ -86,11 +86,13 @@
         });
 
         // change your basemap here.  Search Esri's basemap names for other names.
+        //map reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html
         const map = new Map({
           basemap: "oceans",
           layers: [layer, layer2]
         });
 
+        //map view reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html
         const view = new MapView({
           map: map,
           container: "viewDiv",
@@ -99,6 +101,7 @@
         });
 
         //add in Print service  from Esri JS API "Print Service Widget"
+        //print service reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Print.html
         view.when(() => {
           const print = new Print({
             view: view,
@@ -120,6 +123,7 @@
 
 
         // time slider widget initialization
+        //time slider reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-TimeSlider.html
         const timeSlider = new TimeSlider({
           container: "timeSlider",
           view: view,
@@ -131,9 +135,9 @@
               switch (type) {
                 case "min":
                   element.setAttribute("style", "color: #00000;");
-                  element.innerText = "February 2019";
-                  break;
-                case "max":
+                  element.innerText = "February 2019";    // these inner text's overwrite the content so
+                  break;                                  //only the month and year show up. Hours were also 
+                case "max":                               // originally showing up and that was not wanted
                   element.setAttribute("style", "color: #000000;");
                   element.innerText = "November 2019";
                   break;
@@ -180,6 +184,7 @@
 
         // view.ui.add(legendExpand, "top-left");
 
+        //layer list reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList.html
         const layerList = new LayerList({
           view: view,
           listItemCreatedFunction: (event) => {
