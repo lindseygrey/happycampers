@@ -85,6 +85,7 @@
         
         });
 
+        // change your basemap here.  Search Esri's basemap names for other names.
         const map = new Map({
           basemap: "oceans",
           layers: [layer, layer2]
@@ -97,7 +98,7 @@
           center: [-79.3755, 44.4103]
         });
 
-        //add in Print service
+        //add in Print service  from Esri JS API "Print Service Widget"
         view.when(() => {
           const print = new Print({
             view: view,
@@ -107,7 +108,7 @@
           });
 
         const PrintExpand = new Expand({
-          expandIconClass: "esri-icon-printer",
+          expandIconClass: "esri-icon-printer", //select your icon from esri's menu of icons
           expandTooltip: "Print Map",
           view: view,
           content: print,
@@ -165,7 +166,7 @@
           };
         });
 
-
+        //Alternative way of doing the Legend with toggle
         // const legend = new Legend({
         //   view: view
         // });
